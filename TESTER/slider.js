@@ -15,11 +15,13 @@ Sliders.append(firstSlide)
 Sliders.append(secondSlide)
 Sliders.append(thirdSlide)
 Sliders.prepend(lastSlide)
-Sliders.style.transform = `translateX(${ -widthSlide    - 12     }px)`;
+Sliders.style.transform = `translateX(${ -412 - 12 }px)`;
 let co = 0 ;
 const timmer = setInterval(()=>{
     co=0;
 },500)
+
+console.log(slides)
 nxt.addEventListener('click', () => {
     co++;
     if (co == 1){
@@ -36,6 +38,14 @@ nxt.addEventListener('click', () => {
         }
             
     }
+
+    switch(index){
+        case 1 :
+            slides[index].style.backgroundColor = "#FBE2D4";
+            break;
+            default:
+                break;
+    }  
 })
 
 

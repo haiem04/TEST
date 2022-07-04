@@ -42,7 +42,12 @@
     background-color:#ffffff;
     border-radius: 50%;
 }
+.box_img{
+    opacity: 0;
+}
 .active{
-    display: block;
-    transition: 0.7s;
+    opacity: 1;
+}
+.colorForFirstSlide{
+    background-color : #CBC7ED
 }

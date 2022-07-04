@@ -1,6 +1,7 @@
-
+//max width 2480px
 var Sliders = document.querySelector('.sliders')
 let slides = document.querySelectorAll('.slide')
+let boxImg = document.querySelectorAll('.box_img')
 var widthSlide = slides[0].offsetWidth;
 const firstSlide = slides[0].cloneNode(true)
 const secondSlide = slides[1].cloneNode(true)
@@ -16,6 +17,7 @@ Sliders.append(secondSlide)
 Sliders.append(thirdSlide)
 Sliders.prepend(lastSlide)
 Sliders.style.transform = `translateX(${ -412 - 12 }px)`;
+slides[1].style.backgroundColor = "#FBE2D4"
 let co = 0 ;
 const timmer = setInterval(()=>{
     co=0;
@@ -23,10 +25,12 @@ const timmer = setInterval(()=>{
 var colorB = 2;
 console.log(slides)
 nxt.addEventListener('click', () => {
+    
     co++;
+    boxImg = document.querySelectorAll('.box_img')
+    slides = document.querySelectorAll('.slide')
     if (co == 1){
        console.log(co)
-        slides = document.querySelectorAll('.slide')
         if(index > slides.length-4){    
             //return;
         }
@@ -37,27 +41,54 @@ nxt.addEventListener('click', () => {
             Sliders.style.transition = '0.5s'
         }
             
-    }
-    console.log(index)
-        colorB += index;
+        
+        
+        for(var i = 0 ;i < slides.length; i++){
+            if(boxImg[i].className == "box_img active"){
+                console.log(boxImg[i].className,i,index)
+                boxImg[i].classList.remove('active');
+                slides[i].style.backgroundColor = "#ECECEC"
+            }
+        }
+        boxImg[index +1 ].classList.add('active')
+
         switch(index){
-        case 1: 
-        slides[index].style.backgroundColor = "#FBE2D4";
-        break;
-        case 2 :
-            slides[index].style.backgroundColor = "#FBE2D4";
-            break;
-            default:
+            case 1:
+                slides[index+1].style.backgroundColor = "#FBE2D4"
                 break;
-    }  
+            case 2:
+                slides[index+1].style.backgroundColor = "#FBBEC9"
+                break;
+            case 3:
+                slides[index+1].style.backgroundColor = "#BDE7D9"
+                    break;
+            case 4:
+                slides[index+1].style.backgroundColor = "#C6DEFD"
+                    break;   
+            case 5:
+                slides[index+1].style.backgroundColor = "#FDF5D0"
+                    break;    
+            case 6:
+                slides[index+1].style.backgroundColor = "#CBC7ED"
+                    break;     
+            case 7:
+                slides[index+1].style.backgroundColor = "#FBE2D4"
+                    break;               
+                default:
+                    break;
+        }
+
+    }
+
 })
 
 
 
 pre.addEventListener('click', () => {
     co++;
-    slides = document.querySelectorAll('.slide')
     if (co == 1){
+        slides = document.querySelectorAll('.slide')
+         boxImg = document.querySelectorAll('.box_img')
         console.log(co)
         console.log(index)
         if(index <= 0){
@@ -69,6 +100,42 @@ pre.addEventListener('click', () => {
             Sliders.style.transition = '0.5s'
         }
         
+        for(var i = 0 ;i < slides.length; i++){
+            if(boxImg[i].className == "box_img active"){
+                console.log(boxImg[i].className,i,index)
+                boxImg[i].classList.remove('active');
+                slides[i].style.backgroundColor = "#ECECEC"
+            }
+        }
+        boxImg[index +1 ].classList.add('active')
+ switch(index){
+    case 0:
+        slides[index+1].style.backgroundColor = "#CBC7ED"
+        break;
+            case 1:
+                slides[index+1].style.backgroundColor = "#FBE2D4"
+                break;
+            case 2:
+                slides[index+1].style.backgroundColor = "#FBBEC9"
+                break;
+            case 3:
+                slides[index+1].style.backgroundColor = "#BDE7D9"
+                    break;
+            case 4:
+                slides[index+1].style.backgroundColor = "#C6DEFD"
+                    break;   
+            case 5:
+                slides[index+1].style.backgroundColor = "#FDF5D0"
+                    break;    
+            case 6:
+                slides[index+1].style.backgroundColor = "#CBC7ED"
+                    break;     
+            case 7:
+                slides[index+1].style.backgroundColor = "#FBE2D4"
+                    break;               
+                default:
+                break;
+        }
             
     }
     
@@ -78,13 +145,18 @@ pre.addEventListener('click', () => {
 Sliders.addEventListener("transitionend",() =>{
  slides = document.querySelectorAll('.slide')
  console.log(slides,"id"+ index)
+ boxImg = document.querySelectorAll('.box_img')
     if(index > 0 ){
         if(slides[index].id === firstSlide.id){
             index= 1;
          moving = -widthSlide * index - 12 * index;
         Sliders.style.transform = `translateX(${moving}px)`;
             Sliders.style.transition = 'none';
+        boxImg[index+1 ].classList.add('active')
+        slides[index+1].style.backgroundColor = "#FBE2D4"
+            
         }
+        
     }
     console.log(index)
     if(index <= 0 || slides[index].id == lastSlide.id  ){
@@ -92,6 +164,8 @@ Sliders.addEventListener("transitionend",() =>{
          moving = -widthSlide * index - 12 * index;
         Sliders.style.transform = `translateX(${moving}px)`;
         Sliders.style.transition = 'none';
+    boxImg[index + 1].classList.add('active')
+    slides[index+1].style.backgroundColor = "#CBC7ED"
     }
 
 })

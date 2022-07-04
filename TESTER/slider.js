@@ -20,7 +20,7 @@ let co = 0 ;
 const timmer = setInterval(()=>{
     co=0;
 },500)
-
+var colorB = 2;
 console.log(slides)
 nxt.addEventListener('click', () => {
     co++;
@@ -38,9 +38,13 @@ nxt.addEventListener('click', () => {
         }
             
     }
-
-    switch(index){
-        case 1 :
+    console.log(index)
+        colorB += index;
+        switch(index){
+        case 1: 
+        slides[index].style.backgroundColor = "#FBE2D4";
+        break;
+        case 2 :
             slides[index].style.backgroundColor = "#FBE2D4";
             break;
             default:
